@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import * as d3 from 'd3'
+import '../src/styles.css'
 
 const width = 960
 const height = 500
@@ -15,7 +16,12 @@ const csvUrl =
   'https://gist.githubusercontent.com/RhonaON/a43e64b04c7d3c6d79a06457723793cd/raw/cssNamedColours.csv'
 
 fetchText(csvUrl).then((text) => {
-  console.log(d3.csvParse(text))
+  const data = d3.csvParse(text)
+  let message = ''
+  message = message + data.length + ' rows\n'
+  message = message + data.columns.length + ' columns\n'
+  message = message + Math.round(text.length) / 2670 + ' kb\n'
+  document.getElementById('message-container').textContent = message
 })
 
 const App = () => {
