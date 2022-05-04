@@ -22,7 +22,7 @@ const App = () => {
   }, [])
 
   if (!data) {
-    return <pre>Loading..</pre>
+    return <pre>Loading...</pre>
   }
 
   const colourPie = pie().value(1)
