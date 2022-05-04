@@ -4,8 +4,6 @@ Using the United Nations population division data to practice bar chart data vis
 
 Small project following along with (https://www.youtube.com/watch?v=2LhoCfjm8R4), using Create React App template and NPM instead of UMD as described in videos.
 
-Dataset taken from (https://population.un.org/wpp/Download/Standard/Population/)and cleaned up in LibreOffice before being exported as csv file. 
+Original dataset can be found at: (https://population.un.org/wpp/Download/Standard/Population/)
 
-Git Gist used to store publicly available csv file of dataset.
-
-Git Gist csv file url: 
+Found modified public csv file on Git Gist. URL: (https://gist.githubusercontent.com/nexus1058/aea033dbd0f53098e3aa437c252c5c81/raw/UN_Population_2019.csv) 
