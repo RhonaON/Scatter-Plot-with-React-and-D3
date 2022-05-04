@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import * as d3 from 'd3'
-import { scaleBand, scaleLinear, max } from 'd3'
+import { scaleBand, scaleLinear, max, csv } from 'd3'
 
 const csvUrl =
-  'https://gist.githubusercontent.com/zhuekaterina/e9297725404b083b2f6467a37d7b3da2/raw/unpopulation.csv'
+  'https://gist.githubusercontent.com/curran/0ac4077c7fc6390f5dd33bf5c06cb5ff/raw/605c54080c7a93a417a3cea93fd52e7550e76500/UN_Population_2019.csv'
 
-const width = 600
-const height = 600
+const width = 960
+const height = 500
 
 const App = () => {
   // initial state of null means data hasn't been loaded yet
@@ -20,7 +19,9 @@ const App = () => {
       return d
     }
 
-    d3.csv(csvUrl, row).then(setData)
+    csv(csvUrl, row).then((data) => {
+      setData(data.slice(0, 10))
+    })
   }, [])
 
   if (!data) {
@@ -37,8 +38,6 @@ const App = () => {
   // Linear scale:
   // Domain of the linear sace is 2 number = minimum and maximum (from data space)
   // Range of linear scale also has min and max (within screen space)
-
-  console.log(data[0])
 
   const yScale = scaleBand()
     .domain(data.map((d) => d.Country))
@@ -57,7 +56,7 @@ const App = () => {
     <svg width={width} height={height}>
       {data.map((d) => (
         <rect
-          x={0}
+          key={d.Country}
           y={yScale(d.Country)}
           width={xScale(d.Population)}
           height={yScale.bandwidth()}
