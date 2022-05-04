@@ -27,6 +27,8 @@ const App = () => {
 
   const colourPie = pie().value(1)
 
+  // d = convention for row in the d3 community
+
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${centreX}, ${centreY})`}>
