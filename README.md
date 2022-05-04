@@ -1,9 +1,11 @@
-# Visualising CSS colours with React and D3
+# Creating Bar Charts using React and D3
 
-A program that loads in CSS colours csv file using D3 utilities - namely pie and arc libraries, and uses React state to visualise the data.
+Using the United Nations population division data to practice bar chart data visualisation with React and D3.js.
 
-Small project following along with `https://www.youtube.com/watch?v=2LhoCfjm8R4`, using Create React App template and NPM instead of UMD as described in videos.
+Small project following along with (https://www.youtube.com/watch?v=2LhoCfjm8R4), using Create React App template and NPM instead of UMD as described in videos.
 
-Dataset taken from MDN CSS colours: `https://drafts.csswg.org/css-color/#color-syntax` and cleaned up using google sheets before saving to project as simple csv file and creating git gist link.
+Dataset taken from (https://population.un.org/wpp/Download/Standard/Population/)and cleaned up in LibreOffice before being exported as csv file. 
 
-Git Gist csv file url: `https://gist.github.com/RhonaON/a43e64b04c7d3c6d79a06457723793cd`
+Git Gist used to store publicly available csv file of dataset.
+
+Git Gist csv file url: 
