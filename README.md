@@ -6,4 +6,4 @@ Small project following along with (https://www.youtube.com/watch?v=2LhoCfjm8R4)
 
 Original dataset can be found at: (https://population.un.org/wpp/Download/Standard/Population/)
 
-Found modified public csv file on Git Gist. URL: (https://gist.githubusercontent.com/nexus1058/aea033dbd0f53098e3aa437c252c5c81/raw/UN_Population_2019.csv) 
+Found modified public csv file on Git Gist. URL: (https://gist.githubusercontent.com/zhuekaterina/e9297725404b083b2f6467a37d7b3da2/raw/unpopulation.csv) 
