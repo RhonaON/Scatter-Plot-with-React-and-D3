@@ -8,6 +8,10 @@ const csvUrl =
 const width = 960
 const height = 500
 
+// Margin convention:
+// How you make room for axes - margin = gaps (inner rect = where svg viz goes) therefore we use inner width and inner // //// height
+const margin = { top: 20, right: 20, bottom: 20, left: 20 }
+
 const App = () => {
   // initial state of null means data hasn't been loaded yet
   const [data, setData] = useState(null)
@@ -39,9 +43,12 @@ const App = () => {
   // Domain of the linear sace is 2 number = minimum and maximum (from data space)
   // Range of linear scale also has min and max (within screen space)
 
+  const innerHeight = height - margin.top - margin.bottom
+  const innerWidth = width - margin.left - margin.right
+
   const yScale = scaleBand()
     .domain(data.map((d) => d.Country))
-    .range([0, height])
+    .range([0, innerHeight])
 
   // Max utility:
   // d3 provides a utility called 'max'
@@ -50,18 +57,20 @@ const App = () => {
 
   const xScale = scaleLinear()
     .domain([0, max(data, (d) => d.Population)])
-    .range([0, width])
+    .range([0, innerWidth])
 
   return (
     <svg width={width} height={height}>
-      {data.map((d) => (
-        <rect
-          key={d.Country}
-          y={yScale(d.Country)}
-          width={xScale(d.Population)}
-          height={yScale.bandwidth()}
-        />
-      ))}
+      <g transform={`translate(${margin.left}, ${margin.top})`}>
+        {data.map((d) => (
+          <rect
+            key={d.Country}
+            y={yScale(d.Country)}
+            width={xScale(d.Population)}
+            height={yScale.bandwidth()}
+          />
+        ))}
+      </g>
     </svg>
   )
 }
