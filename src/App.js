@@ -69,7 +69,7 @@ const App = () => {
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         {xScale.ticks().map((tickValue) => (
-          <g transform={`translate(${xScale(tickValue)}, 0)`}>
+          <g key={tickValue} transform={`translate(${xScale(tickValue)}, 0)`}>
             <line y1={0} y2={innerHeight} stroke='black' />
             <text
               dy='.90em'
@@ -82,6 +82,7 @@ const App = () => {
         ))}
         {yScale.domain().map((tickValue) => (
           <text
+            key={tickValue}
             dy='.32em'
             x={-9}
             style={{ textAnchor: 'end' }}
