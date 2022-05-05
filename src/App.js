@@ -43,7 +43,8 @@ const App = () => {
   // y axis determined by the different countries - to figure out y position we need to use a construction called a scale - //// specifically an band scale (useful for ordinal attributes)
   // Band scale takes values from the 'data' space or domain (eg. countries) and return them in 'screen' space or the range //// of the scale
   // Bandwidth of the scale = width of one bar
-
+  const siformat = format('.2s')
+  const xAxisTickFormat = (tickValue) => siformat(tickValue).replace('G', 'B')
   // scaleBand controls the distance between the bars
   // .padding() specifically controls spacing
   const yScale = scaleBand()
@@ -61,7 +62,7 @@ const App = () => {
         <AxisBottom
           xScale={xScale}
           innerHeight={innerHeight}
-          tickFormat={(n) => format('.2s')(n).replace('G', 'B')}
+          tickFormat={xAxisTickFormat}
         />
         <AxisLeft yScale={yScale} />
         <text
