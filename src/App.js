@@ -61,7 +61,7 @@ const App = () => {
         <AxisBottom
           xScale={xScale}
           innerHeight={innerHeight}
-          tickFormat={format('.2s')}
+          tickFormat={(n) => format('.2s')(n).replace('G', 'B')}
         />
         <AxisLeft yScale={yScale} />
         <text
