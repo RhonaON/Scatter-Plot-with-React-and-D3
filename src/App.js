@@ -55,6 +55,12 @@ const App = () => {
   // max takess two arguments - the data array, and an accesser fxn which takes as input d(one of our rows) => and returns in // this case d.Population
   // In this example - this will compare the population numbers across all rows and will return the maximum
 
+  // Ticks utility within d3 Scale:
+  //  .ticks()
+  // defaults to 10 if you don't specify count
+  //  {xScale.ticks().map()} - instead of row (d) this fxn returns a tick value
+  // in the below function we return an svg <line /> element
+
   const xScale = scaleLinear()
     .domain([0, max(data, (d) => d.Population)])
     .range([0, innerWidth])
@@ -62,6 +68,15 @@ const App = () => {
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left}, ${margin.top})`}>
+        {xScale.ticks().map((tickValue) => (
+          <line
+            x1={xScale(tickValue)}
+            y1={0}
+            x2={xScale(tickValue)}
+            y2={innerHeight}
+            stroke='black'
+          />
+        ))}
         {data.map((d) => (
           <rect
             key={d.Country}
