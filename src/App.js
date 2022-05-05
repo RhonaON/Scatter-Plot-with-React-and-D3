@@ -33,25 +33,33 @@ const App = () => {
   // max takess two arguments - the data array, and an accesser fxn which takes as input d(one of our rows) => and returns in // this case d.Population
   // In this example - this will compare the population numbers across all rows and will return the maximum
 
-  const xScale = scaleLinear()
-    .domain([0, max(data, (d) => d.Population)])
-    .range([0, innerWidth])
+  // Accessor functions assigned to variables:
+  const yValue = (d) => d.Country
+  const xValue = (d) => d.Population
 
   // (Y) Band scale:
   // y axis determined by the different countries - to figure out y position we need to use a construction called a scale - //// specifically an band scale (useful for ordinal attributes)
   // Band scale takes values from the 'data' space or domain (eg. countries) and return them in 'screen' space or the range //// of the scale
   // Bandwidth of the scale = width of one bar
 
-  const yScale = scaleBand()
-    .domain(data.map((d) => d.Country))
-    .range([0, innerHeight])
+  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight])
+
+  const xScale = scaleLinear()
+    .domain([0, max(data, xValue)])
+    .range([0, innerWidth])
 
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         <AxisBottom xScale={xScale} innerHeight={innerHeight} />
         <AxisLeft yScale={yScale} />
-        <Marks data={data} xScale={xScale} yScale={yScale} />
+        <Marks
+          data={data}
+          xScale={xScale}
+          yScale={yScale}
+          xValue={xValue}
+          yValue={yValue}
+        />
       </g>
     </svg>
   )

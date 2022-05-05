@@ -1,4 +1,4 @@
-export const AxisLeft = ({ yScale }) => {
+export const AxisLeft = ({ yScale }) =>
   yScale.domain().map((tickValue) => (
     <text
       key={tickValue}
@@ -10,4 +10,3 @@ export const AxisLeft = ({ yScale }) => {
       {tickValue}
     </text>
   ))
-}
