@@ -6,7 +6,7 @@
 //  {xScale.ticks().map()} - instead of row (d) this fxn returns a tick value
 // in the below function we return an svg <line /> element
 
-export const AxisBottom = ({ xScale, innerHeight }) =>
+export const AxisBottom = ({ xScale, innerHeight, tickFormat }) =>
   xScale.ticks().map((tickValue) => (
     <g
       className='tick'
@@ -15,7 +15,7 @@ export const AxisBottom = ({ xScale, innerHeight }) =>
     >
       <line y1={0} y2={innerHeight} />
       <text dy='.90em' style={{ textAnchor: 'middle' }} y={innerHeight + 3}>
-        {tickValue}
+        {tickFormat(tickValue)}
       </text>
     </g>
   ))

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { scaleBand, scaleLinear, max } from 'd3'
+import { scaleBand, scaleLinear, max, format } from 'd3'
 
 import { useData } from './useData'
 import { AxisBottom } from './AxisBottom'
@@ -13,7 +13,7 @@ const height = 500
 // Margin convention:
 // How you make room for axes - margin = gaps (inner rect = where svg viz goes) therefore we use inner width and inner // ////// height
 // How the graph fits on the page visually
-const margin = { top: 20, right: 20, bottom: 100, left: 220 }
+const margin = { top: 20, right: 60, bottom: 100, left: 220 }
 const xAxisLabelOffset = 50
 
 const App = () => {
@@ -58,7 +58,11 @@ const App = () => {
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <AxisBottom xScale={xScale} innerHeight={innerHeight} />
+        <AxisBottom
+          xScale={xScale}
+          innerHeight={innerHeight}
+          tickFormat={format('.2s')}
+        />
         <AxisLeft yScale={yScale} />
         <text
           className='axis-label'

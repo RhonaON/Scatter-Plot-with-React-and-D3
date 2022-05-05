@@ -10,7 +10,7 @@ export const useData = () => {
   // the built in '+d' unary convention is the popular alternative to parseFloat for turning strings into numbers
   useEffect(() => {
     const row = (d) => {
-      d.Population = +d['2020']
+      d.Population = +d['2020'] * 1000
       return d
     }
 
