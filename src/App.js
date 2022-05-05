@@ -14,6 +14,7 @@ const height = 500
 // How you make room for axes - margin = gaps (inner rect = where svg viz goes) therefore we use inner width and inner // ////// height
 // How the graph fits on the page visually
 const margin = { top: 20, right: 20, bottom: 100, left: 220 }
+const xAxisLabelOffset = 50
 
 const App = () => {
   const data = useData()
@@ -62,7 +63,7 @@ const App = () => {
         <text
           className='axis-label'
           x={innerWidth / 2}
-          y={innerHeight + 50}
+          y={innerHeight + xAxisLabelOffset}
           textAnchor='middle'
         >
           Population
