@@ -5,6 +5,7 @@ import { scaleBand, scaleLinear, max } from 'd3'
 import { useData } from './useData'
 import { AxisBottom } from './AxisBottom'
 import { AxisLeft } from './AxisLeft'
+import { Marks } from './Marks'
 
 const width = 960
 const height = 500
@@ -50,14 +51,7 @@ const App = () => {
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         <AxisBottom xScale={xScale} innerHeight={innerHeight} />
         <AxisLeft yScale={yScale} />
-        {data.map((d) => (
-          <rect
-            key={d.Country}
-            y={yScale(d.Country)}
-            width={xScale(d.Population)}
-            height={yScale.bandwidth()}
-          />
-        ))}
+        <Marks data={data} xScale={xScale} yScale={yScale} />
       </g>
     </svg>
   )
