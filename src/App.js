@@ -10,7 +10,7 @@ const height = 500
 
 // Margin convention:
 // How you make room for axes - margin = gaps (inner rect = where svg viz goes) therefore we use inner width and inner // //// height
-const margin = { top: 20, right: 20, bottom: 20, left: 20 }
+const margin = { top: 20, right: 20, bottom: 20, left: 200 }
 
 const App = () => {
   // initial state of null means data hasn't been loaded yet
@@ -69,13 +69,26 @@ const App = () => {
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         {xScale.ticks().map((tickValue) => (
-          <line
-            x1={xScale(tickValue)}
-            y1={0}
-            x2={xScale(tickValue)}
-            y2={innerHeight}
-            stroke='black'
-          />
+          <g transform={`translate(${xScale(tickValue)}, 0)`}>
+            <line y1={0} y2={innerHeight} stroke='black' />
+            <text
+              dy='.90em'
+              style={{ textAnchor: 'middle' }}
+              y={innerHeight + 3}
+            >
+              {tickValue}
+            </text>
+          </g>
+        ))}
+        {yScale.domain().map((tickValue) => (
+          <text
+            dy='.32em'
+            x={-9}
+            style={{ textAnchor: 'end' }}
+            y={yScale(tickValue) + yScale.bandwidth() / 2}
+          >
+            {tickValue}
+          </text>
         ))}
         {data.map((d) => (
           <rect
