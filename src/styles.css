@@ -9,3 +9,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tick line {
+  stroke: #e5e2e0;
+}
+
+.tick text {
+  fill: #635f50;
+}
+
+.mark {
+  fill: #137880;
+}
+
+.axis-label {
+  font-size: 2em;
+  fill: #635f50;
+}

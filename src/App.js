@@ -12,7 +12,8 @@ const height = 500
 
 // Margin convention:
 // How you make room for axes - margin = gaps (inner rect = where svg viz goes) therefore we use inner width and inner // ////// height
-const margin = { top: 20, right: 20, bottom: 20, left: 200 }
+// How the graph fits on the page visually
+const margin = { top: 20, right: 20, bottom: 100, left: 220 }
 
 const App = () => {
   const data = useData()
@@ -42,7 +43,12 @@ const App = () => {
   // Band scale takes values from the 'data' space or domain (eg. countries) and return them in 'screen' space or the range //// of the scale
   // Bandwidth of the scale = width of one bar
 
-  const yScale = scaleBand().domain(data.map(yValue)).range([0, innerHeight])
+  // scaleBand controls the distance between the bars
+  // .padding() specifically controls spacing
+  const yScale = scaleBand()
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
+    .padding(0.2)
 
   const xScale = scaleLinear()
     .domain([0, max(data, xValue)])
@@ -53,6 +59,14 @@ const App = () => {
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         <AxisBottom xScale={xScale} innerHeight={innerHeight} />
         <AxisLeft yScale={yScale} />
+        <text
+          className='axis-label'
+          x={innerWidth / 2}
+          y={innerHeight + 50}
+          textAnchor='middle'
+        >
+          Population
+        </text>
         <Marks
           data={data}
           xScale={xScale}
