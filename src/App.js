@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { scaleBand, scaleLinear, max, csv } from 'd3'
+import { scaleBand, scaleLinear, max } from 'd3'
 
-const csvUrl =
-  'https://gist.githubusercontent.com/curran/0ac4077c7fc6390f5dd33bf5c06cb5ff/raw/605c54080c7a93a417a3cea93fd52e7550e76500/UN_Population_2019.csv'
+import { useData } from './useData'
 
 const width = 960
 const height = 500
@@ -13,20 +12,8 @@ const height = 500
 const margin = { top: 20, right: 20, bottom: 20, left: 200 }
 
 const App = () => {
+  const data = useData()
   // initial state of null means data hasn't been loaded yet
-  const [data, setData] = useState(null)
-
-  // the built in '+d' unary convention is the popular alternative to parseFloat for turning strings into numbers
-  useEffect(() => {
-    const row = (d) => {
-      d.Population = +d['2020']
-      return d
-    }
-
-    csv(csvUrl, row).then((data) => {
-      setData(data.slice(0, 10))
-    })
-  }, [])
 
   if (!data) {
     return <pre>Loading...</pre>
