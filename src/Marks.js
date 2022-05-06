@@ -6,15 +6,14 @@ export const Marks = ({
   yValue,
   toolTipFormat,
 }) =>
+  // circles accept cx and cy - centre x and y positions - // instead of x and y
   data.map((d) => (
-    <rect
+    <circle
       className='mark'
-      key={yValue(d)}
-      x={0}
-      y={yScale(yValue(d))}
-      width={xScale(xValue(d))}
-      height={yScale.bandwidth()}
+      cx={xScale(xValue(d))}
+      cy={yScale(yValue(d))}
+      r={10}
     >
       <title>{toolTipFormat(xValue(d))}</title>
-    </rect>
+    </circle>
   ))
