@@ -1,5 +1,5 @@
 export const AxisLeft = ({ yScale }) =>
-  yScale.domain().map((tickValue) => (
+  yScale.ticks().map((tickValue) => (
     <g className='tick text'>
       <text
         key={tickValue}
