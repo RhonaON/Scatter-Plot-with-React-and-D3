@@ -17,6 +17,9 @@ export const useData = () => {
       return d
     }
 
-    csv(csvUrl, row).then(setData)
+    csv(csvUrl, row).then((data) => {
+      setData(data)
+    })
   }, [])
+  return data
 }
