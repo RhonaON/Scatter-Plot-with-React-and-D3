@@ -1,7 +1,9 @@
+// Import libraries
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { scaleLinear, extent, format } from 'd3'
 
+// Import internal files
 import { useData } from './useData'
 import { AxisBottom } from './AxisBottom'
 import { AxisLeft } from './AxisLeft'
