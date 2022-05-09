@@ -53,6 +53,7 @@ const App = () => {
           x={innerWidth / 2}
           y={innerHeight + xAxisLabelOffset}
           textAnchor='middle'
+          innerWidth={innerWidth}
         >
           Population
         </text>
